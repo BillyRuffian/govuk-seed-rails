@@ -1,0 +1,39 @@
+
+<% content_for :head do %>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<% end %>
+<% content_for :page_title do %>
+  GOV.UK - Seed
+<% end %>
+<% # Uncomment if you want to use the proposition menu %>
+<% #- content_for :header_class do %>
+<% # with-proposition %>
+<% #- content_for :proposition_header do %>
+<% # = render 'shared/proposition_menu' %>
+<% content_for :content do %>
+  <main class="wrapper">
+    <div class="<%= controller_name %> <%= action_name %> content">
+      <main id="page-container">
+        <div class="phase-banner">
+          <p>
+            <strong class="phase-tag">ALPHA</strong>
+            <span>This is a new service - your feedback will help us to improve it.</span>
+          </p>
+        </div>
+        <main id="page-container" role="main">
+          <div class="grid-row">
+            <div class="column-three-quarters">
+              <%= yield %>
+            </div>
+            <div class="column-quarter">
+              <%= yield :sidebar %>
+            </div>
+          </div>
+        </main>
+      </main>
+    </div>
+  </main>
+<% end %>
+<%= render template: 'layouts/govuk_template' %>
